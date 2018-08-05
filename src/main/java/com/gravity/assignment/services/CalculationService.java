@@ -1,7 +1,5 @@
 package com.gravity.assignment.services;
 
-import static com.gravity.assignment.services.PointService.sortedPointsForDimensions;
-
 import com.gravity.assignment.entities.DistanceCalculationResult;
 import com.gravity.assignment.entities.Point;
 import java.util.List;
@@ -9,15 +7,18 @@ import org.apache.commons.collections4.CollectionUtils;
 
 public class CalculationService {
 
+  private PointService pointService;
+
+  public CalculationService() {
+    pointService = new PointService();
+  }
+
   public DistanceCalculationResult calculateShortestDistance(List<Point> points) {
-    PointService pointService = new PointService();
-    sortedPointsForDimensions = pointService.buildSortedPointsForDimensions(points);
-    return calculateDistance(sortedPointsForDimensions.get(0), null, 0);
+    return calculateDistance(pointService.sort(points, 0), null, 0);
   }
 
   public DistanceCalculationResult calculateDistance(List<Point> points,
       DistanceCalculationResult shortestDeltaResult, int currentDimension) {
-    PointService pointService = new PointService();
     if (CollectionUtils.isEmpty(points)) {
       return shortestDeltaResult;
     }
@@ -115,6 +116,3 @@ public class CalculationService {
   }
 
 }
-
-
-
