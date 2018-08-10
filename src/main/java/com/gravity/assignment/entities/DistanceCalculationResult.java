@@ -54,14 +54,4 @@ public class DistanceCalculationResult {
     return (secondPoint.equals(that.firstPoint) || secondPoint.equals(that.secondPoint));
   }
 
-  @Override
-  public int hashCode() {
-    int result;
-    long temp;
-    temp = Double.doubleToLongBits(distance);
-    result = (int) (temp ^ (temp >>> 32));
-    result = 31 * result + firstPoint.hashCode();
-    result = 31 * result + secondPoint.hashCode();
-    return result;
-  }
 }
