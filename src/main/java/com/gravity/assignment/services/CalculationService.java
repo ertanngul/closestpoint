@@ -14,6 +14,11 @@ public class CalculationService {
   }
 
   public DistanceCalculationResult calculateShortestDistance(List<Point> points) {
+    if(CollectionUtils.isEmpty(points)){
+      return new DistanceCalculationResult();
+    }
+
+    PointService.setDimensionCount(points.get(0).getCoordinates().size());
     return calculateDistance(pointService.sort(points, 0), null, 0);
   }
 
@@ -116,3 +121,6 @@ public class CalculationService {
   }
 
 }
+
+
+

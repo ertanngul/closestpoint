@@ -5,9 +5,17 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Point {
 
-  private List<Double> coordinates;
   private int index;
+  private List<Double> coordinates;
   public static int currentDimension = 0;
+
+  public Point() {
+  }
+
+  public Point(int index, List<Double> coordinates) {
+    this.index = index;
+    this.coordinates = coordinates;
+  }
 
   @Override
   public String toString() {

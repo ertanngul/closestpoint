@@ -2,11 +2,13 @@ package com.gravity.assignment;
 
 import com.gravity.assignment.entities.DistanceCalculationResult;
 import com.gravity.assignment.entities.Point;
+import com.gravity.assignment.exceptions.MalStructuredInputFileException;
 import com.gravity.assignment.exceptions.MissingInputFileException;
 import com.gravity.assignment.services.CalculationService;
 import com.gravity.assignment.services.PointService;
 import com.gravity.assignment.utils.FileOperationsUtil;
 import java.util.List;
+import org.apache.commons.collections4.CollectionUtils;
 
 public class Main {
 
@@ -26,9 +28,13 @@ public class Main {
 
       String inputFilePath = args[0];
       List<Point> pointList = fileOperationsUtil.parseFile(inputFilePath);
-      PointService.setDimensionCount(pointList.get(0).getCoordinates().size());
-      DistanceCalculationResult d = null;
 
+      if (CollectionUtils.isEmpty(pointList)) {
+        throw new MalStructuredInputFileException(
+            "Empty input file! Please restructure your input file. ");
+      }
+
+      DistanceCalculationResult d = null;
 
       if (PointService.getDimensionCount() < ALGORITHM_THRESHOLD) {
         System.out.println("Closest points algorithm is utilizing...");
