@@ -15,6 +15,10 @@ Run the code with:
 ```
 mvn exec:java -Dexec.mainClass="com.gravity.assignment.Main" -Dexec.args=“full path of input file”
 ```
+Run the tests with:
+```
+mvn test
+```
 The result of the implementation, the closest pair points, is displayed on the console and written in an output file, on the same path with the input file and has “output_” prefix.  
 ## Algorithm and Complexity
 Two types of algorithms are implemented in this project. One of them is the `closest pair algorithm` which is defined in [ClosestPair.pdf](https://www.cs.ucsb.edu/~suri/cs235/ClosestPair.pdf) and [DIVIDE-AND-CONQUER IN MULTIDIMENSIONAL SPACE](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.366.9611&rep=rep1&type=pdf), the other one is the `brute-force` algorithm. The algorithm to be applied is determined according to the dimension of the input points. 
